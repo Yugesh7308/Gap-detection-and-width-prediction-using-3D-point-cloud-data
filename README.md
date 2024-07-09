@@ -7,6 +7,8 @@ STEP 1 - Reading and Analyzing PCD Data
 •	Action: Read the PCD file. This involves loading the PCD into the processing environment and performing an initial analysis to understand its structure, including the distribution and density of points.
 
 
+
+
 STEP 2 - Identifying 2D Regions of Interest (ROI)
 
 •	Objective: To locate specific areas within the PCD that are critical for gap analysis.
@@ -14,11 +16,15 @@ STEP 2 - Identifying 2D Regions of Interest (ROI)
 •	Action: Train a Yolov8 model to predict the gap regions. This step involves using the Yolov8 object detection algorithm to identify and mark regions of interest within the PCD that are likely to contain gaps between vehicle parts.
 
 
+
+
 STEP 3 - Cropping Point Cloud Data
 
 •	Objective: To select the required point cloud data for detailed gap analysis.
 
 •	Action: Crop the PCD using the coordinates min_x, max_x, min_y, and max_y. By isolating the regions of interest identified in Step 2, we refine the dataset to focus only on the relevant areas, reducing computational load and enhancing analysis precision.
+
+
 
 
 STEP 4- Drawing Lines along the y-axis for Different y-values
@@ -32,6 +38,8 @@ o	Defining min_y as the starting line and max_y as the ending line.
 o	The difference between y_max and y_min is multiplied by increments of 0.1, 0.2, ..., 0.9, and added to y_min to get the points at which lines need to be drawn.
 o	A tolerance of 0.03 is used to ensure that points are available at the given y-values.
 o	Drawing these lines along the y-axis helps in identifying variations in gap widths across different segments.
+
+
 
 
 STEP 5 - Projecting Those Lines on the xz-plane
